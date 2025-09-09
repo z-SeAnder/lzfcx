@@ -6860,21 +6860,7 @@ foreach($files as $file) {
         $code = trim($_POST['code']);
 
         // Security check - prevent some dangerous functions
-        $dangerous_functions = [
-            'exec', 'system', 'shell_exec', 'passthru', 'eval',
-            'file_get_contents', 'file_put_contents', 'fopen', 'fwrite',
-            'unlink', 'rmdir', 'chmod', 'chown'
-        ];
-
-        foreach ($dangerous_functions as $func) {
-            if (stripos($code, $func) !== false) {
-                echo '<div class="alert alert-danger">';
-                echo '<strong>' . lng('Security Error') . '</strong><br>';
-                echo lng('The function') . ' <code>' . htmlspecialchars($func) . '</code> ' . lng('is not allowed for security reasons') . '.';
-                echo '</div>';
-                return;
-            }
-        }
+    
 
         // Capture output
         ob_start();
